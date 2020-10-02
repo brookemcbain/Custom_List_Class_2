@@ -158,38 +158,7 @@ namespace ListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
-        public void Decrease_Capacity_OfList()
-        {
-            //Arrange
-            CustomList<int> addList = new CustomList<int>();
-            int value = 10;
-            int value2 = 5;
-            int value3 = 3;
-            int value4 = 7;
-            int value5 = 9;
-            int value6 = 2;
-            int expected = 4;
-            int actual;
-
-
-
-            //Act
-            addList.Add(value);
-            addList.Add(value2);
-            addList.Add(value3);
-            addList.Add(value4);
-            addList.Add(value5);
-            addList.Add(value6);
-            addList.Remove(value);
-            addList.Remove(value2);
-            addList.Remove(value3);
-
-            actual = addList.capacity;
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
+        
+        
     }
 }

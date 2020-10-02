@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,12 @@ namespace CustomList
 
             items = new T[capacity];
         }
+        public T this[int index]
+        {
+            get { return items[index]; }
+            set { items[index] = value; }
+        }
+
         public void Add(T value)
         {
             if (count == capacity)
@@ -43,23 +50,29 @@ namespace CustomList
         }
         public bool Remove(T value)
         {
-            T[] newArray = new T[capacity];
-            for (int i = 0; i < items.Length; i--)
-            {
-                newArray[i] = items[i];
-            }
-            items = newArray;
+            T[] temporaryArray = new T[items.Length];
+            bool output = true;  
 
-            items[count] = value;
+            for (int i = 0, b = 0; i < items.Length; i++, b++)
+            {
+                temporaryArray[b] = items[i];
+
+                if (items[i].Equals(value))
+                {
+
+                    items[i] = items[i + 1]; 
+                }
+                else
+                {
+                    temporaryArray[b] = items[i];
+                }
+            }
+            items = temporaryArray; 
             count--;
+            return output; 
 
         }
-        public T this[int index]
-        {
-            get
-            {
-                return items[index];
-            }
-        }
+
     }
 }
+    
