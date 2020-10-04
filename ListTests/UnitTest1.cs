@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomList;
+using System.Runtime.CompilerServices;
 
 namespace ListTests
 {
@@ -99,7 +100,7 @@ namespace ListTests
             int value = 12;
             int valueTwo = 13;
             int valueThree = 14;
-            int expected = 13;
+            int expected = 12; 
             int actual;
 
             //Act
@@ -158,7 +159,55 @@ namespace ListTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        
-        
+        [TestMethod]
+        public void Turn_List_IntoString()
+        {
+            CustomList<int> newList = new CustomList<int>();
+            int value = 12; 
+            int expected = 12; 
+            int actual;
+
+            newList.Add(value);
+            newList.ToString();  
+            
+            actual = newList[0]; 
+
+            Assert.AreEqual(expected, actual); 
+        }
+        [TestMethod]
+        public void Get_CountOfToStringList_MultipleValues()
+        {
+            CustomList<int> newList = new CustomList<int>();
+            int value = 12;
+            int valueTwo = 13;
+            int valueThree = 14;
+
+            int expected = 3; 
+            int actual;
+
+            newList.Add(value);
+            newList.Add(valueTwo);
+            newList.Add(valueThree);
+            newList.ToString(); 
+            
+            actual = newList.count; 
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Get_CapacityOf_ToStringList()
+        {
+            CustomList<int> newList = new CustomList<int>();
+            int value = 12;
+            int expected = 4;
+            int actual;
+
+            newList.Add(value);
+            newList.ToString(); 
+
+            actual = newList.capacity;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

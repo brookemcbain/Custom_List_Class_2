@@ -1,9 +1,13 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace CustomList
 {
@@ -13,6 +17,7 @@ namespace CustomList
 
         public int count;
         public int capacity;
+        public string result; 
 
         private T[] items;
 
@@ -72,7 +77,34 @@ namespace CustomList
             return output; 
 
         }
+        public override string ToString() { return base.ToString(); }
+        
+            
+        
+        //public static void operator++( value)
+        //{
 
+        //}
+        
     }
 }
-    
+
+
+
+
+
+//public string ToString(T value)
+//{
+//    T[] toStringArray = new T[items.Length];
+
+//    for (int i = 0; i < items.Length; i++)
+//    {
+//        foreach (T str in items)
+//        {
+//            return base.ToString();
+//        }
+//    }
+//    items = toStringArray;      
+//}
+//public static Overload operator +(CustomList<T> b, CustomList<T>); 
+
