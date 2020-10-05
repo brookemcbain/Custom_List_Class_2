@@ -17,7 +17,7 @@ namespace CustomList
 
         public int count;
         public int capacity;
-        public string result; 
+        public string result;
 
         private T[] items;
 
@@ -56,7 +56,7 @@ namespace CustomList
         public bool Remove(T value)
         {
             T[] temporaryArray = new T[items.Length];
-            bool output = true;  
+            bool output = true;
 
             for (int i = 0, b = 0; i < items.Length; i++, b++)
             {
@@ -65,46 +65,36 @@ namespace CustomList
                 if (items[i].Equals(value))
                 {
 
-                    items[i] = items[i + 1]; 
+                    items[i] = items[i + 1];
                 }
                 else
                 {
                     temporaryArray[b] = items[i];
                 }
             }
-            items = temporaryArray; 
+            items = temporaryArray;
             count--;
-            return output; 
+            return output;
 
         }
-        public override string ToString() { return base.ToString(); }
-        
-            
-        
-        //public static void operator++( value)
-        //{
+        public string ToString(T value)
+        {
+            return base.ToString() + " " + value.ToString();
+        }
 
-        //}
-        
+        public static CustomList<T> operator +(CustomList<T> a, CustomList<T> b)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            newList = a + b;
+            return newList;
+
+        }
+        public static CustomList<T> operator -(CustomList<T> a, CustomList<T> b)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            newList = a - b;
+            return newList;
+        }
+
     }
 }
-
-
-
-
-
-//public string ToString(T value)
-//{
-//    T[] toStringArray = new T[items.Length];
-
-//    for (int i = 0; i < items.Length; i++)
-//    {
-//        foreach (T str in items)
-//        {
-//            return base.ToString();
-//        }
-//    }
-//    items = toStringArray;      
-//}
-//public static Overload operator +(CustomList<T> b, CustomList<T>); 
-

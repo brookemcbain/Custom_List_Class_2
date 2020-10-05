@@ -163,51 +163,63 @@ namespace ListTests
         public void Turn_List_IntoString()
         {
             CustomList<int> newList = new CustomList<int>();
-            int value = 12; 
-            int expected = 12; 
-            int actual;
+            int value = 12;
+            string expected = "12"; 
+            string actual;
 
             newList.Add(value);
-            newList.ToString();  
-            
-            actual = newList[0]; 
+
+            actual = value.ToString();    
 
             Assert.AreEqual(expected, actual); 
         }
+        
         [TestMethod]
-        public void Get_CountOfToStringList_MultipleValues()
+        public void Turn_MultipleValues_ToString()
         {
             CustomList<int> newList = new CustomList<int>();
             int value = 12;
-            int valueTwo = 13;
-            int valueThree = 14;
-
-            int expected = 3; 
-            int actual;
+            int value2 = 3;
+            int value3 = 8;
+            string expected = "12" + "3" + "8";
+            string actual; 
+            string actualOne;
+            string actualTwo;
+            string actualThree; 
 
             newList.Add(value);
-            newList.Add(valueTwo);
-            newList.Add(valueThree);
-            newList.ToString(); 
-            
-            actual = newList.count; 
+            newList.Add(value2);
+            newList.Add(value3);
 
-            Assert.AreEqual(expected, actual);
+            actualOne = value.ToString();
+            actualTwo = value2.ToString();
+            actualThree = value3.ToString();
+
+            actual = actualOne + actualTwo + actualThree;
+
+            Assert.AreEqual(expected, actual); 
+
         }
         [TestMethod]
-        public void Get_CapacityOf_ToStringList()
+        public void Add_TwoList_Together()
         {
-            CustomList<int> newList = new CustomList<int>();
-            int value = 12;
-            int expected = 4;
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            int valueOne = 1;
+            int valueTwo = 2;
+            int valueThree = 3;
+            int valueFour = 4;
+            int expected = 1 + 2 + 3 + 4;
             int actual;
 
-            newList.Add(value);
-            newList.ToString(); 
+            listOne.Add(valueOne);
+            listOne.Add(valueTwo);
+            listTwo.Add(valueThree);
+            listTwo.Add(valueFour);
 
-            actual = newList.capacity;
+            actual = listOne + listTwo; 
 
-            Assert.AreEqual(expected, actual);
+
         }
     }
 }
